@@ -59,6 +59,19 @@ ran the `lsblk` to confirm again
 
 - We ran the `sudo lvmdiskscan` to confirm the available partitions, we could see 4 partitions but no physical volumes created yet.
 
-
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/lvmdiskscan.PNG)
+
+- We then created physical volumes on the partitions using the below:
+
+`sudo pvcreate /dev/xvdf1 /dev/xvdg1 /dev/xvdh1`
+
+we then confirmed the PVs have been created using `sudo pvs`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/pvcreate.PNG)
+
+- We have to add all the PVs to avolume group (VG), we do that using the below and the name should be "webdata-vg"
+
+`sudo vgcreate webdata-vg /dev/xvdf1 /dev/xvdg1 /dev/xvdh1`
+
+
 
