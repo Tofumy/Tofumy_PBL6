@@ -81,6 +81,7 @@ we then confirmed the PVs have been created using `sudo pvs`
     - logs-lv : for storing data for logs
 
 `sudo lvcreate -n apps-lv -L 14G webdata-vg`
+
 `sudo lvcreate -n logs-lv -L 14G webdata-vg`
 
 to confirm the LVs
@@ -97,9 +98,10 @@ to confirm the LVs
 - We used the mkfs.ext4 to format the logical volumes with ext4 filesystem
 
 `sudo mkfs -t ext4 /dev/webdata-vg/apps-lv`
+
 `sudo mkfs -t ext4 /dev/webdata-vg/logs-lv`
 
-![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/mkfs-ext4-vg.PNG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/mkfs-ext4.PNG)
 
 - Created ext /var/www/html directory ext to store website files
 
@@ -146,6 +148,7 @@ UUID=7989a97e-bc63-494d-ad15-654b79af59b1 /var/log      ext4 defaults 0 0
 - Tested the configuration and reloaded the daemon
 
  `sudo mount -a`
+ 
  `sudo systemctl daemon-reload`
  
 - Verified the setup by running `df -h`
