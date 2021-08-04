@@ -154,3 +154,7 @@ UUID=7989a97e-bc63-494d-ad15-654b79af59b1 /var/log      ext4 defaults 0 0
 - Verified the setup by running `df -h`
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/df-h.PNG)
+
+
+
+### Step 2 - Preparing the Database Server
