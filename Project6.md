@@ -8,7 +8,15 @@ Project 6 consists of two parts:
 
 ### Requirements
 
-Your 3-Tier Setup
+The 3-Tier Setup
 - A Laptop or PC to serve as a client
 - An EC2 Linux Server as a web server (This is where you will install WordPress)
 - An EC2 Linux server as a database (DB) server
+
+
+
+### Step 1 - Preparing the Web Server
+
+- Created an EC2 instance in the AWS that will server as Web Server (We are using Red Hat OS for the linux image)
+- Created 3 EBS (Elastic Block Store) Volume and attach to the Web Server
+
