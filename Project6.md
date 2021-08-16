@@ -298,23 +298,31 @@ sudo yum module enable php:remi-7.4
 sudo yum install php php-opcache php-gd php-curl php-mysqlnd
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
-setsebool -P httpd_execmem 1
+sudo setsebool -P httpd_execmem 1
 
 ```
 
 Restart Apache
 
-sudo systemctl restart httpd
+`sudo systemctl restart httpd`
 
-Download wordpress and copy wordpress to var/www/html
+Downloaded wordpress 
 
-  mkdir wordpress
-  cd   wordpress
-  sudo wget http://wordpress.org/latest.tar.gz
-  sudo tar xzvf latest.tar.gz
-  sudo rm -rf latest.tar.gz
-  cp wordpress/wp-config-sample.php wordpress/wp-config.php
-  cp -R wordpress /var/www/html/
+  `mkdir wordpress`
+  `cd   wordpress`
+  `sudo wget http://wordpress.org/latest.tar.gz`
+  
+  ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/wordpress.PNG)
+  
+Extracted the compressed word press installation file amnd then removed the compressed file
+  
+  `sudo tar xzvf latest.tar.gz`
+  `sudo rm -rf latest.tar.gz`
+  
+Changed the name of the config file to "wp-config.php"  and then copied the file to ext /var/www/html/ ext path
+  `cp wordpress/wp-config-sample.php wordpress/wp-config.php`
+  `cp -R wordpress /var/www/html/`
+  
 Configure SELinux Policies
 
   sudo chown -R apache:apache /var/www/html/wordpress
