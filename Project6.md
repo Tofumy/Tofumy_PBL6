@@ -302,14 +302,16 @@ sudo setsebool -P httpd_execmem 1
 
 ```
 
-Restart Apache
+Restarted Apache
 
 `sudo systemctl restart httpd`
 
 Downloaded wordpress 
 
   `mkdir wordpress`
+  
   `cd   wordpress`
+  
   `sudo wget http://wordpress.org/latest.tar.gz`
   
   ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/wordpress.PNG)
@@ -317,15 +319,38 @@ Downloaded wordpress
 Extracted the compressed word press installation file amnd then removed the compressed file
   
   `sudo tar xzvf latest.tar.gz`
+  
   `sudo rm -rf latest.tar.gz`
   
 Changed the name of the config file to "wp-config.php"  and then copied the file to ext /var/www/html/ ext path
+  
   `cp wordpress/wp-config-sample.php wordpress/wp-config.php`
+  
   `cp -R wordpress /var/www/html/`
   
-Configure SELinux Policies
+Configured SELinux Policies
 
-  sudo chown -R apache:apache /var/www/html/wordpress
-  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
-  sudo setsebool -P httpd_can_network_connect=1
+  `sudo chown -R apache:apache /var/www/html/wordpress`
+  
+  `sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R`
+  
+  `sudo setsebool -P httpd_can_network_connect=1`
+  
+  
+  
+  ### Step 4 — Install MySQL on your DB Server EC2
+  
+  
+  `sudo yum update`
+  
+  `sudo yum install mysql-server`
+  
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/install-mysql.PNG)
+  
+Verify that the service is up and running by using sudo systemctl status mysqld, if it is not running, restart the service and enable it so it will be running even after reboot:
+
+`sudo systemctl restart mysqld`
+`sudo systemctl enable mysqld`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/systemctl-mysqld.PNG)
 
