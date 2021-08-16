@@ -286,7 +286,9 @@ UUID=c5759bf6-89c6-4914-8768-25c13efb7101  /db ext4 defaults 0 0
 
 `sudo systemctl start httpd`
 
-To install PHP and it’s depemdencies
+To install PHP and it’s dependencies
+
+``` bash
 
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
@@ -297,6 +299,9 @@ sudo yum install php php-opcache php-gd php-curl php-mysqlnd
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
 setsebool -P httpd_execmem 1
+
+```
+
 Restart Apache
 
 sudo systemctl restart httpd
