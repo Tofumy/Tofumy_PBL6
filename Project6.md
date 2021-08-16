@@ -350,7 +350,58 @@ Configured SELinux Policies
 Verify that the service is up and running by using sudo systemctl status mysqld, if it is not running, restart the service and enable it so it will be running even after reboot:
 
 `sudo systemctl restart mysqld`
+
 `sudo systemctl enable mysqld`
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/systemctl-mysqld.PNG)
 
+
+
+
+### Step 5 — Configure DB to work with WordPress
+
+``` mysql
+sudo mysql
+CREATE DATABASE wordpress;
+CREATE USER `myuser`@`<Web-Server-Private-IP-Address>` IDENTIFIED BY 'mypass';
+GRANT ALL ON wordpress.* TO 'myuser'@'<Web-Server-Private-IP-Address>';
+FLUSH PRIVILEGES;
+SHOW DATABASES;
+exit
+
+```
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/DB-create.PNG)
+
+
+
+### Step 6 — Configure WordPress to connect to remote database.
+
+Hint: Do not forget to open MySQL port 3306 on DB Server EC2. For extra security, you shall allow access to the DB server ONLY from your Web Server’s IP address, so in the Inbound Rule configuration specify source as /32
+
+We created an inbound rule allow connection from the web server
+
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/inboundrule.PNG)
+
+
+Install MySQL client and test that you can connect from your Web Server to your DB server by using mysql-client
+
+`sudo yum install mysql`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/install-mysql-webserver.PNG)
+
+`sudo mysql -u admin -p -h <DB-Server-Private-IP-address>`
+
+Verified Connection using `SHOW DATABASES;` command 
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/webserver-connect.PNG)
+
+
+
+Changed permissions and configuration so Apache could use WordPress:
+
+- Enabled TCP port 80 in Inbound Rules configuration for the Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your workstation’s IP)
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/tcp-rule.PNG)
+
+Try to access from your browser the link to your WordPress http://<Web-Server-Public-IP-Address>/wordpress/
