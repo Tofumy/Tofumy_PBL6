@@ -397,11 +397,42 @@ Verified Connection using `SHOW DATABASES;` command
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/webserver-connect.PNG)
 
 
-
 Changed permissions and configuration so Apache could use WordPress:
 
 - Enabled TCP port 80 in Inbound Rules configuration for the Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your workstation’s IP)
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/tcp-rule.PNG)
 
-Try to access from your browser the link to your WordPress http://<Web-Server-Public-IP-Address>/wordpress/
+From the Web Server EC2, I had to edit the wp-config.php file to pupoluatre the DB information using the below
+
+`sudo vi /var/www/html/wordpress/wp-config.php`
+
+Then changed the below information:
+
+```
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+
+/** MySQL database username */
+define( 'DB_USER', 'tofumy' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', '******' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'Private IP of the EC2 DB Server ' );
+
+```
+NB: This was the user we created in the DB that was granted permission to the wordpress DB created
+
+After doing that, we saved and Tried to access from your browser the link to your WordPress http://<Web-Server-Public-IP-Address>/wordpress/
+    
+    
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/web-wordpress.PNG)
+    
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/web-wordpress2.PNG)
+    
+![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/web-wordpress3.PNG)
+    
+
+    
