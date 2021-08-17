@@ -427,6 +427,10 @@ NB: This was the user we created in the DB that was granted permission to the wo
 
 After doing that, we saved and Tried to access from your browser the link to your WordPress http://<Web-Server-Public-IP-Address>/wordpress/
     
+    WP Admin
+    username: tofumy
+    pwd : D********8
+    
     
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL6/blob/main/web-wordpress.PNG)
     
